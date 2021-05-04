@@ -56,13 +56,17 @@ exports.handler = async function(event) {
                 }
             }
 
-            return { 
-                keyword  : e.text,
+            let key = e.text;
+            let obj = {}
+
+            obj[key] = { 
                 sentiment : e.sentiment.label,
                 relevance : e.relevance,
                 count : e.count,
                 emotion : maxEmotionScore
             }
+
+            return obj;
         })
 
 
@@ -84,8 +88,10 @@ exports.handler = async function(event) {
                 }
             }
 
-            return { 
-                entity  : e.text,
+            let key = e.text;
+            let obj = {}
+
+            obj[key] =  { 
                 type : e.type,
                 sentiment : e.sentiment.label,
                 relevance : e.relevance,
@@ -93,6 +99,8 @@ exports.handler = async function(event) {
                 count : e.count,
                 confidence : e.confidence
             }
+
+            return obj
         })
 
 
